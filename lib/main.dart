@@ -35,31 +35,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Dart Socket Server')),
-        body: Center(
-            child: FutureBuilder(
-          future: server.init(),
-          builder: (context, snapshot) {
-            if (snapshot == null) return Text('Server: Null Snapshot');
-            if (snapshot.error != null)
-              return Text('Server: Snapshot Error: ${snapshot.error}');
-            final serverSocket = snapshot.data as ServerSocket;
-            if (serverSocket == null) return Text('Null Server Socket');
-            return Column(
-              children: [
-                Text('address: ${serverSocket.address}'),
-                Text('port: ${serverSocket.port}'),
-                StreamBuilder(
-                  stream: server.stream,
-                  builder: (context, snapshot) {
-                    if (snapshot == null) return Text('Socket: Null Snapshot');
-                    if (snapshot.error != null)
-                      return Text('Socket Error: ${snapshot.error}');
-                    return Text(snapshot.data ?? 'null');
-                  },
-                ),
-              ],
-            );
-          },
-        )));
+        body: Center(child: Text('server')));
   }
 }
