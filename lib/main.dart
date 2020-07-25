@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:dart_socket_server/dart_socket_server.dart';
+import 'package:dart_socket_server/dart_websocket_server.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final server = DartSocketServer();
+  final server = DartWebSocketServer();
 
   @override
   Widget build(BuildContext context) {
