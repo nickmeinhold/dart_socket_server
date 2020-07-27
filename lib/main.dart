@@ -28,7 +28,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final server = DartWebSocketServer();
+  final server = DartSocketServer();
 
   @override
   Widget build(BuildContext context) {
