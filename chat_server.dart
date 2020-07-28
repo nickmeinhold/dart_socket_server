@@ -15,11 +15,11 @@ class ChatClient {
   }
 
   void messageHandler(List<int> data) {
-    String message = new String.fromCharCodes(data).trim();
+    final message = String.fromCharCodes(data).trim();
     distributeMessage(this, '$_address:$_port Message: $message');
   }
 
-  void errorHandler(error) {
+  void errorHandler(dynamic error) {
     print('$_address:$_port Error: $error');
     removeClient(this);
     _socket.close();
@@ -51,15 +51,15 @@ void main() {
 void handleConnection(Socket client) {
   print('Connection from '
       '${client.remoteAddress.address}:${client.remotePort}');
-  clients.add(new ChatClient(client));
-  client.write("Welcome to dart-chat! "
-      "There are ${clients.length - 1} other clients\n");
+  clients.add(ChatClient(client));
+  client.write('Welcome to dart-chat! '
+      'There are ${clients.length - 1} other clients\n');
 }
 
 void distributeMessage(ChatClient client, String message) {
-  for (ChatClient c in clients) {
+  for (final c in clients) {
     if (c != client) {
-      c.write(message + "\n");
+      c.write(message + '\n');
     }
   }
 }
